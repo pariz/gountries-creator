@@ -29,14 +29,14 @@ func createFiles(c *cli.Context) {
 		panic("No caller information")
 	}
 
-	srcPath = path.Dir(f) + "/src"
-	distPath = path.Dir(f) + "/dist"
+	srcPath = filepath.Join(path.Dir(f), "src")
+	distPath = filepath.Join(path.Dir(f), "dist")
 
 	// Create dist folders if not present
-	os.MkdirAll(filepath.Join(distPath, "/yaml/countries"), 0775)
-	os.MkdirAll(filepath.Join(distPath, "/yaml/subdivisions"), 0775)
-	os.MkdirAll(filepath.Join(distPath, "/json/countries"), 0775)
-	os.MkdirAll(filepath.Join(distPath, "/json/subdivisions"), 0775)
+	os.MkdirAll(filepath.Join(distPath, "yaml", "countries"), 0775)
+	os.MkdirAll(filepath.Join(distPath, "yaml", "subdivisions"), 0775)
+	os.MkdirAll(filepath.Join(distPath, "json", "countries"), 0775)
+	os.MkdirAll(filepath.Join(distPath, "json", "subdivisions"), 0775)
 
 	// Begin parsing and saving
 	//
