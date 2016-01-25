@@ -12,9 +12,6 @@ func main() {
 
 	app.Name = "Gountries Creator"
 
-	// Create files from data
-	//
-
 	app.Commands = []cli.Command{
 		{
 			Name:   "create",
