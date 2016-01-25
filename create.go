@@ -121,7 +121,7 @@ func getSaveableData(countries *[]gountries.Country) (saveData map[string][]byte
 		// Load subdivisions
 		//
 
-		if bytesSubd, err := ioutil.ReadFile(fmt.Sprintf("%s/subdivisions/%s.yaml", srcPath, ucAlpha2)); err == nil {
+		if bytesSubd, err := ioutil.ReadFile(filepath.Join(srcPath, "subdivisions", fmt.Sprintf("%s.yaml", ucAlpha2))); err == nil {
 
 			var subdMap = make(map[string]interface{})
 
@@ -173,14 +173,15 @@ func getSaveableData(countries *[]gountries.Country) (saveData map[string][]byte
 				if subdYamlBytes, err := yaml.Marshal(&subDivisions); err != nil {
 					fmt.Printf("Could not marshal yaml data for %s: %s\n", subDivisions[0].CountryAlpha2, err)
 				} else {
-					saveData[fmt.Sprintf("%s/yaml/subdivisions/%s.yaml", distPath, strings.ToLower(subDivisions[0].CountryAlpha2))] = subdYamlBytes
+
+					saveData[filepath.Join(distPath, "yaml", "subdivisions", fmt.Sprintf("%s.yaml", strings.ToLower(subDivisions[0].CountryAlpha2)))] = subdYamlBytes
 				}
 
 				// Create json
 				if subdJSONBytes, err := json.Marshal(&subDivisions); err != nil {
 					fmt.Printf("Could not marshal json data for %s: %s\n", subDivisions[0].CountryAlpha2, err)
 				} else {
-					saveData[fmt.Sprintf("%s/json/subdivisions/%s.json", distPath, strings.ToLower(subDivisions[0].CountryAlpha2))] = subdJSONBytes
+					saveData[filepath.Join(distPath, "json", "subdivisions", fmt.Sprintf("%s.json", strings.ToLower(subDivisions[0].CountryAlpha2)))] = subdJSONBytes
 				}
 
 			} else {
@@ -197,7 +198,7 @@ func getSaveableData(countries *[]gountries.Country) (saveData map[string][]byte
 		if yamlBytes, err := yaml.Marshal(&country); err != nil {
 			fmt.Printf("Could not marshal country YAML: %s.yaml: %s\n", country.Alpha2, err)
 		} else {
-			saveData[fmt.Sprintf("%s/yaml/countries/%s.yaml", distPath, strings.ToLower(country.Alpha2))] = yamlBytes
+			saveData[filepath.Join(distPath, "yaml", "countries", fmt.Sprintf("%s.yaml", strings.ToLower(country.Alpha2)))] = yamlBytes
 		}
 
 		// Create json
@@ -206,7 +207,7 @@ func getSaveableData(countries *[]gountries.Country) (saveData map[string][]byte
 		if jsonBytes, err := json.Marshal(&country); err != nil {
 			fmt.Printf("Could not marshal country JSON: %s.json: %s\n", country.Alpha2, err)
 		} else {
-			saveData[fmt.Sprintf("%s/json/countries/%s.json", distPath, strings.ToLower(country.Alpha2))] = jsonBytes
+			saveData[filepath.Join(distPath, "json", "countries", fmt.Sprintf("%s.json", strings.ToLower(country.Alpha2)))] = jsonBytes
 
 		}
 
