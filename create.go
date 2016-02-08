@@ -11,9 +11,9 @@ import (
 	"strconv"
 	"strings"
 
-	"bitbucket.org/pariz/gountries"
 	"github.com/Masterminds/glide/vendor/gopkg.in/yaml.v2"
 	"github.com/codegangsta/cli"
+	"github.com/pariz/gountries"
 )
 
 var (
@@ -235,6 +235,20 @@ func populateCountriesFromJSON() (countries *[]gountries.Country, err error) {
 
 	if err = json.Unmarshal(bytes, &countries); err != nil {
 		return
+	}
+
+	// Uppercase translations
+	//
+
+	for ck, c := range *countries {
+
+		for tk, t := range c.Translations {
+			fmt.Println(ck, tk, t, strings.ToUpper(tk))
+
+			c.Translations[strings.ToUpper(tk)] = t
+			delete(c.Translations, tk)
+		}
+
 	}
 
 	return
