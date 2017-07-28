@@ -11,9 +11,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Masterminds/glide/vendor/gopkg.in/yaml.v2"
 	"github.com/codegangsta/cli"
 	"github.com/pariz/gountries"
+	"gopkg.in/yaml.v2"
 )
 
 var (
