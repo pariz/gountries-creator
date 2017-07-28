@@ -1,5 +1,5 @@
 ---
-SG-01:
+01:
   name: Central Singapore
   names: Central Singapore
   latitude: 1.3418329
@@ -8,7 +8,7 @@ SG-01:
   min_longitude: 103.8230134
   max_latitude: 1.3948174
   max_longitude: 103.86428
-SG-02:
+02:
   name: North East
   names: North East
   latitude: 1.352083
@@ -17,12 +17,12 @@ SG-02:
   min_longitude: 103.6055448
   max_latitude: 1.4707592
   max_longitude: 104.0884808
-SG-03:
+03:
   name: North West
   names: North West
   latitude: 1.3537604
   longitude: 103.7107653
-SG-04:
+04:
   name: South East
   names: South East
   latitude: 1.352083
@@ -31,7 +31,7 @@ SG-04:
   min_longitude: 103.6055448
   max_latitude: 1.4707592
   max_longitude: 104.0884808
-SG-05:
+05:
   name: South West
   names: South West
   latitude: 1.352083
